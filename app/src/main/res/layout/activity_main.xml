@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#00BCD4"
+            android:gravity="center"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnWifi"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#FF5722"
+            android:gravity="center"
+            android:onClick="onWifi"
+            android:text="WiFi"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnBluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:onClick="onBluetooth"
+            android:text="蓝牙"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnBackup"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#673AB7"
+            android:gravity="center"
+            android:onClick="onBackup"
+            android:text="备份"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnIMEI"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#FFC107"
+            android:gravity="center"
+            android:onClick="onIMEI"
+            android:text="获取IMEI"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnNUM"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#E91E63"
+            android:gravity="center"
+            android:onClick="onMobileNumber"
+            android:text="获取手机号"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/btnSetVoipRecordPath"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#001E63"
+            android:gravity="center"
+            android:onClick="setVoipRecordPath"
+            android:text="设置voip录音路径"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</ScrollView>
