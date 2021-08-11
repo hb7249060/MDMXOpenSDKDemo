@@ -1,6 +1,10 @@
 package com.hello.test;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +23,8 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
 
     protected OpenX mOpenX;
 
@@ -54,6 +60,51 @@ public class MainActivity extends AppCompatActivity {
                 textStatus.setText("已连接");
             }
         });
+
+        //backup data receiver
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(MDMXActions.mdmx_backup_success);
+        intentFilter.addAction(MDMXActions.mdmx_backup_failed);
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, String.format("backup receiver action=%s,\nsrc=%s, \ndest=%s",
+                        intent.getAction(),
+                        intent.getStringExtra(MDMXActions.backup_src),
+                        intent.getStringExtra(MDMXActions.backup_dest)));
+            }
+        }, intentFilter);
+
+        //通话广播
+        IntentFilter intentFilter2 = new IntentFilter();
+        intentFilter2.addAction(MDMXActions.ACTION_INCOMING_CALL);
+        intentFilter2.addAction(MDMXActions.ACTION_OUTGOING_CALL);
+        intentFilter2.addAction(MDMXActions.ACTION_CALL_CONNECTED);
+        intentFilter2.addAction(MDMXActions.ACTION_CALL_DISCONNECTED);
+        intentFilter2.addAction(MDMXActions.ACTION_CALL_REJECT);
+        intentFilter2.addAction(MDMXActions.ACTION_CALL_RECORD);
+
+        intentFilter2.addAction(MDMXActions.ACTION_VOIP_RECORD);
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if(intent.getAction().equals(MDMXActions.ACTION_CALL_RECORD)) {
+                    Log.d(TAG, String.format("call record receiver action=%s,\nid=%s, \npath=%s",
+                            intent.getAction(),
+                            intent.getLongExtra(MDMXActions.ID, -1),
+                            intent.getStringExtra(MDMXActions.PATH)));
+                } else if(intent.getAction().equals(MDMXActions.ACTION_VOIP_RECORD)) {
+                    Log.d(TAG, String.format("voip record receiver action=%s,\npath=%s",
+                            intent.getAction(),
+                            intent.getStringExtra(MDMXActions.PATH)));
+                } else {
+                    Log.d(TAG, String.format("call receiver action=%s,\nslotId=%s, \nphoneNumber=%s",
+                            intent.getAction(),
+                            intent.getIntExtra(MDMXActions.EXTRA_SLOT_ID, -1),
+                            intent.getStringExtra(MDMXActions.EXTRA_PHONE_NUMBER)));
+                }
+            }
+        }, intentFilter2);
     }
 
     @Override
@@ -140,10 +191,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onIMEI(View view) {
-        String IMEI1 = oxwService.getIMEI(0);
-        String IMEI2 = oxwService.getIMEI(1);
+        String IMEI1 = oxwService.imei(0);
+        String IMEI2 = oxwService.imei(1);
+        String MEID = oxwService.meid();
 
-        textStatus.setText(String.format("IMEI1:%s\nIMEI2:%s",IMEI1,IMEI2));
+        textStatus.setText(String.format("IMEI1:%s\nIMEI2:%s\nMEID:%s",IMEI1,IMEI2,MEID));
     }
 
     public void onMobileNumber(View view) {

@@ -57,7 +57,7 @@
             android:background="#FFC107"
             android:gravity="center"
             android:onClick="onIMEI"
-            android:text="获取IMEI"
+            android:text="获取IMEI/MEID"
             android:textColor="@color/white" />
 
         <TextView
