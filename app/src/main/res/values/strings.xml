@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OpenSDKDemo</string>
+    <string name="my_accessibility_service">my_accessibility_service</string>
 </resources>

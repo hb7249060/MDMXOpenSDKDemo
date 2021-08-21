@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -20,66 +19,316 @@
             android:gravity="center"
             android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/btnWifi"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#FF5722"
-            android:gravity="center"
-            android:onClick="onWifi"
-            android:text="WiFi"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/btnBluetooth"
+            <Button
+                android:id="@+id/btnSDKVersion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSDKVersion"
+                android:text="SDK版本" />
+
+            <Button
+                android:id="@+id/btnIMEI"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onIMEI"
+                android:text="本机串码" />
+
+            <Button
+                android:id="@+id/btnWifi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onWifi"
+                android:text="WiFi" />
+
+            <Button
+                android:id="@+id/btnBluetooth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onBluetooth"
+                android:text="蓝牙" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#4CAF50"
-            android:gravity="center"
-            android:onClick="onBluetooth"
-            android:text="蓝牙"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/btnBackup"
+            <Button
+                android:id="@+id/btnNUM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onMobileNumber"
+                android:text="SIM号码" />
+
+            <Button
+                android:id="@+id/btnBackup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onBackup"
+                android:text="备份" />
+
+            <Button
+                android:id="@+id/btnSetVoipRecordPath"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="2.0"
+                android:gravity="center"
+                android:onClick="setVoipRecordPath"
+                android:text="voip录音路径" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#673AB7"
-            android:gravity="center"
-            android:onClick="onBackup"
-            android:text="备份"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/btnIMEI"
+            <Button
+                android:id="@+id/btnAddDisallowedRunningApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onAddDisallowedRunningApp"
+                android:text="添加禁止运行应用" />
+
+            <Button
+                android:id="@+id/btnClearDisallowedRunningApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onClearDisallowedRunningApp"
+                android:text="清除禁止运行应用" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#FFC107"
-            android:gravity="center"
-            android:onClick="onIMEI"
-            android:text="获取IMEI/MEID"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/btnNUM"
+            <Button
+                android:id="@+id/btnSetContactPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onSetContactPolicy"
+                android:text="通讯录策略设置(黑名单)" />
+
+            <Button
+                android:id="@+id/btnAddContactPolicyNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onAddContactPolicyNumber"
+                android:text="添加通讯录黑名单号码" />
+
+            <Button
+                android:id="@+id/btnClearContactPolicyNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="onClearContactPolicyNumber"
+                android:text="清除通讯录黑名单号码" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#E91E63"
-            android:gravity="center"
-            android:onClick="onMobileNumber"
-            android:text="获取手机号"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/btnSetVoipRecordPath"
+            <Button
+                android:id="@+id/btnSetTimeAndDateSet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetTimeAndDateSet"
+                android:text="系统时间" />
+
+            <Button
+                android:id="@+id/btnSetExternalStorage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetExternalStorage"
+                android:text="外部存储" />
+
+            <Button
+                android:id="@+id/btnSetNetTether"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetNetTether"
+                android:text="网络共享" />
+
+            <Button
+                android:id="@+id/btnSetWifiAp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetWifiAp"
+                android:text="个人热点" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#001E63"
-            android:gravity="center"
-            android:onClick="setVoipRecordPath"
-            android:text="设置voip录音路径"
-            android:textColor="@color/white" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
 
+            <Button
+                android:id="@+id/btnSetVpn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetVpn"
+                android:text="VPN" />
+
+            <Button
+                android:id="@+id/btnSetBluetoothPolicy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetBluetoothPolicy"
+                android:text="蓝牙策略" />
+
+            <Button
+                android:id="@+id/btnSetWifiPolicy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetWifiPolicy"
+                android:text="WIFI策略" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btnSetSuperWhiteList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetSuperWhiteList"
+                android:text="加超级白名单" />
+
+            <Button
+                android:id="@+id/btnSetAppPermission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetAppPermission"
+                android:text="动态授权" />
+
+            <Button
+                android:id="@+id/btnOpenNotification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onOpenNotification"
+                android:text="通知" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btnSetForwardCallSetting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onSetForwardCallSetting"
+                android:text="呼叫转移" />
+
+            <Button
+                android:id="@+id/btnClearApplicationData"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onClearApplicationData"
+                android:text="清除应用数据" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/btnEnableAccessibilityService"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onEnableAccessibilityService"
+                android:text="开启辅助" />
+
+            <Button
+                android:id="@+id/btnDisableAccessibilityService"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onDisableAccessibilityService"
+                android:text="关闭辅助" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
